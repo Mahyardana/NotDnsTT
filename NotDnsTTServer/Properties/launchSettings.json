@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DnsMessengerServer": {
+      "commandName": "Project",
+      "commandLineArgs": "<LOCAL_ADDRESS>:<LOCAL_PORT> <ENCRYPTION_KEY> <DEST_DOMAIN> <SOURCE_DOMAIN> <BACKEND_SERVICE_ADDRESS>:<BACKEND_PORT>"
+    }
+  }
+}

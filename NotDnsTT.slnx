@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="DnsMessengerEncryption/DnsMessengerEncryption.csproj" Id="53aec2cb-cca7-431a-8620-025fa9c5999f" />
+  <Project Path="NotDnsTTClient/NotDnsTTClient.csproj" />
+  <Project Path="NotDnsTTServer/NotDnsTTServer.csproj" />
+</Solution>

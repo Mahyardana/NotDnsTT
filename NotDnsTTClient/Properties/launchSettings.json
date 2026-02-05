@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DnsMessengerClient": {
+      "commandName": "Project",
+      "commandLineArgs": "<DNS_SERVER_ADDRESS>:<DNS_PORT> <ENCRYPTION_KEY> <SOURCE_DOMAIN> <DEST_DOMAIN> <LOCAL_PROXY_ADDRESS>:<LOCAL_PROXY_PORT>"
+    }
+  }
+}
