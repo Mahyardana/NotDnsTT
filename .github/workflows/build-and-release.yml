@@ -61,25 +61,27 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Build NotDnsTTClient - ${{ matrix.target }}
+        shell: bash
         run: |
-          dotnet publish NotDnsTTClient/NotDnsTTClient.csproj `
-            --configuration Release `
-            --runtime ${{ matrix.rid }} `
-            --self-contained `
-            --output ./publish/NotDnsTTClient/${{ matrix.target }} `
-            -p:PublishSingleFile=true `
-            -p:PublishTrimmed=true `
+          dotnet publish NotDnsTTClient/NotDnsTTClient.csproj \
+            --configuration Release \
+            --runtime ${{ matrix.rid }} \
+            --self-contained \
+            --output ./publish/NotDnsTTClient/${{ matrix.target }} \
+            -p:PublishSingleFile=true \
+            -p:PublishTrimmed=true \
             -p:PublishReadyToRun=true
 
       - name: Build NotDnsTTServer - ${{ matrix.target }}
+        shell: bash
         run: |
-          dotnet publish NotDnsTTServer/NotDnsTTServer.csproj `
-            --configuration Release `
-            --runtime ${{ matrix.rid }} `
-            --self-contained `
-            --output ./publish/NotDnsTTServer/${{ matrix.target }} `
-            -p:PublishSingleFile=true `
-            -p:PublishTrimmed=true `
+          dotnet publish NotDnsTTServer/NotDnsTTServer.csproj \
+            --configuration Release \
+            --runtime ${{ matrix.rid }} \
+            --self-contained \
+            --output ./publish/NotDnsTTServer/${{ matrix.target }} \
+            -p:PublishSingleFile=true \
+            -p:PublishTrimmed=true \
             -p:PublishReadyToRun=true
 
       - name: Create artifacts directory
@@ -88,21 +90,23 @@ jobs:
       - name: Package NotDnsTTClient - ${{ matrix.target }}
         shell: bash
         run: |
+          mkdir -p artifacts
           cd publish/NotDnsTTClient/${{ matrix.target }}
           if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-            7z a -tzip ../../../artifacts/NotDnsTTClient-${{ matrix.target }}.zip .
+            7z a -tzip ../../../../artifacts/NotDnsTTClient-${{ matrix.target }}.zip .
           else
-            tar -czf ../../../artifacts/NotDnsTTClient-${{ matrix.target }}.tar.gz .
+            tar -czf ../../../../artifacts/NotDnsTTClient-${{ matrix.target }}.tar.gz .
           fi
 
       - name: Package NotDnsTTServer - ${{ matrix.target }}
         shell: bash
         run: |
+          mkdir -p artifacts
           cd publish/NotDnsTTServer/${{ matrix.target }}
           if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-            7z a -tzip ../../../artifacts/NotDnsTTServer-${{ matrix.target }}.zip .
+            7z a -tzip ../../../../artifacts/NotDnsTTServer-${{ matrix.target }}.zip .
           else
-            tar -czf ../../../artifacts/NotDnsTTServer-${{ matrix.target }}.tar.gz .
+            tar -czf ../../../../artifacts/NotDnsTTServer-${{ matrix.target }}.tar.gz .
           fi
 
       - name: Upload artifacts
