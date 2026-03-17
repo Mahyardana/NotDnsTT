@@ -169,13 +169,13 @@ jobs:
             - NotDnsTTServer-linux-musl-x64.tar.gz
 
             ### Configuration
-            Before running, configure your settings in the `launchSettings.json` file or via command-line arguments:
+            Before running, configure your settings via command-line arguments:
             - Encryption key
             - DNS server address
             - Domain names
             - Port numbers
 
-            See [CONFIGURATION.md](https://github.com/${{ github.repository }}/blob/main/CONFIGURATION.md) for detailed setup instructions.
+            See [CONFIGURATION.md](https://github.com/${{ github.repository }}/blob/master/CONFIGURATION.md) for detailed setup instructions.
 
             ### Security Notice
             ⚠️ This tool implements covert communication channels. Ensure all usage complies with applicable laws and organizational policies.
