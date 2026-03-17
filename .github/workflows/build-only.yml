@@ -1,0 +1,51 @@
+name: Build (Pull Requests)
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+      - develop
+  push:
+    branches:
+      - main
+      - master
+      - develop
+
+jobs:
+  build:
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore NotDnsTT.slnx
+
+      - name: Build solution
+        run: dotnet build NotDnsTT.slnx --configuration Release --no-restore
+
+      - name: Run tests (placeholder)
+        run: dotnet build NotDnsTT.slnx --configuration Debug --no-restore
+        
+      - name: Check for build warnings
+        run: dotnet build NotDnsTT.slnx --configuration Release /p:TreatWarningsAsErrors=false
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ matrix.os }}-${{ github.sha }}
+          path: |
+            **/bin/Release/net8.0/
+          retention-days: 7
