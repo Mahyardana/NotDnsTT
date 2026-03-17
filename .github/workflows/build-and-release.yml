@@ -93,9 +93,9 @@ jobs:
           mkdir -p artifacts
           cd publish/NotDnsTTClient/${{ matrix.target }}
           if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-            7z a -tzip ../../../../artifacts/NotDnsTTClient-${{ matrix.target }}.zip .
+            7z a -tzip ../../../artifacts/NotDnsTTClient-${{ matrix.target }}.zip .
           else
-            tar -czf ../../../../artifacts/NotDnsTTClient-${{ matrix.target }}.tar.gz .
+            tar -czf ../../../artifacts/NotDnsTTClient-${{ matrix.target }}.tar.gz .
           fi
 
       - name: Package NotDnsTTServer - ${{ matrix.target }}
@@ -104,9 +104,9 @@ jobs:
           mkdir -p artifacts
           cd publish/NotDnsTTServer/${{ matrix.target }}
           if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-            7z a -tzip ../../../../artifacts/NotDnsTTServer-${{ matrix.target }}.zip .
+            7z a -tzip ../../../artifacts/NotDnsTTServer-${{ matrix.target }}.zip .
           else
-            tar -czf ../../../../artifacts/NotDnsTTServer-${{ matrix.target }}.tar.gz .
+            tar -czf ../../../artifacts/NotDnsTTServer-${{ matrix.target }}.tar.gz .
           fi
 
       - name: Upload artifacts
